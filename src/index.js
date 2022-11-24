@@ -13,6 +13,8 @@ const refs = {
 }
 
 refs.inputEl.addEventListener('input', Debounce((e) => {
+    refs.listEl.innerHTML = '';
+    refs.infoEl.innerHTML = '';
     const value = e.target.value.trim();
     if (value === '') {
         refs.listEl.innerHTML = '';
@@ -28,7 +30,7 @@ function createMurkupList(countries) {
         return `
             <li>
                 <img src="${country.flags.svg}" alt="flag">
-                <p>${country.name.official}</p>
+                <h1>${country.name.official}</h1>
             </li>
             `
     }).join('');
@@ -39,9 +41,13 @@ function createMurkupList(countries) {
 function createMurkupInfo(countries) {
     const markup = countries.map(country => {
         return `
-            <p>Capital: ${country.capital}</p>
-            <p>Population: ${country.population}</p>
-            <p>Languages: ${Object.values(country.languages).join(' ')}</p >
+            <li>
+            <img src="${country.flags.svg}" alt="flag">
+            <h1>${country.name.official}</h1>
+            </li>
+            <p><span>Capital:</span> ${country.capital}</p>
+            <p><span>Population:</span> ${country.population}</p>
+            <p><span>Languages:</span> ${Object.values(country.languages).join(' ')}</p >
             `
     }).join('');
     return markup;
@@ -55,7 +61,6 @@ function renderCountries(value) {
     } else if (data.length > 1 && data.length <= 10 ) {
         refs.listEl.innerHTML = createMurkupList(data);
     } else if (data.length === 1) {
-        refs.listEl.innerHTML = createMurkupList(data);
         refs.infoEl.innerHTML = createMurkupInfo(data)
     }
         })
