@@ -9,7 +9,6 @@ const refs = {
     inputEl: document.querySelector('#search-box'),
     listEl: document.querySelector('.country-list'),
     infoEl: document.querySelector('.country-info')
-
 }
 
 refs.inputEl.addEventListener('input', Debounce((e) => {
@@ -22,7 +21,6 @@ refs.inputEl.addEventListener('input', Debounce((e) => {
     } else {
         renderCountries(value);
     }
-   
 },DEBOUNCE_DELAY))
 
 function createMurkupList(countries) {

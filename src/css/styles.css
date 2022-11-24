@@ -17,6 +17,8 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  margin-left: 40px;
+  margin-top: 30px;
 }
 
 .country-list, .country-info{
